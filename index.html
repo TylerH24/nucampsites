@@ -71,12 +71,13 @@
                             </div>
                             <div class="row form-group">
                                 <label class="col-sm-6 col-form-label">Campsite Type</label>
-                                <div class="col col-2 btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-success active">
+                                <div class="col-2 btn-group btn-group-toggle" data-toggle="buttons">
+                                    <!--Customized color classes for improved user experience.-->
+                                    <label class="btn btn-primary campsite-type-btn active">
                                         <input type="radio" name="siteType" id="siteTent" value="tent"
                                             autocomplete="off" checked> Tent
                                     </label>
-                                    <label class="btn btn-primary">
+                                    <label class="btn btn-primary campsite-type-btn">
                                         <input type="radio" name="siteType" id="siteRV" value="RV" autocomplete="off">
                                         RV
                                     </label>
@@ -206,6 +207,9 @@
                         <span class="carousel-control-next-icon"></span>
                         <span class="sr-only">Next</span>
                     </a>
+                    <button class="btn btn-danger btn-sm"  id="carouselButton">
+                        <i class="fa fa-pause"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -295,6 +299,20 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script>
+        $(function() {
+            $(".carousel").carousel( { interval: 2000 } );
+            $("#carouselButton").click(function(){
+                if ($("#carouselButton").children("i").hasClass("fa-pause")) {
+                    $(".carousel").carousel("pause");
+                    $("#carouselButton").children("i").removeClass("fa-pause");
+                    $("#carouselButton").children("i").addClass("fa-play");
+                } else {
+                    $(".carousel").carousel("cycle");
+                    $("#carouselButton").children("i").removeClass("fa-play");
+                    $("#carouselButton").children("i").addClass("fa-pause");
+                }
+            });
+        });
     </script>
 
 </body>
